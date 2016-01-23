@@ -143,8 +143,18 @@ try {
  
  // Adjust max humidity level if necessary
   if($targetHumidityAdjusted!=$targetHumidityCurrent) {
-	  $nest->setHumidity($targetHumidityAdjusted, THERMOSTAT_SERIAL);
-	  echo "humidity changed from {$targetHumidityCurrent} to {$targetHumidityAdjusted}\n";
+      $nest->setHumidity($targetHumidityAdjusted, THERMOSTAT_SERIAL);
+      echo "humidity changed from {$targetHumidityCurrent} to {$targetHumidityAdjusted}\n";
+    
+      // Send email when Humidity changes
+      $to      = 'your@email.com';
+      $subject = 'Nest Humidity';
+      $message = "Humidity changed from {$targetHumidityCurrent} to {$targetHumidityAdjusted}\n\nmode={$mode}\ntemp(inside)={$insideTemp}\ntemp(outside)={$outsideTemp}\nhumidity(inside)={$insideHumidity}\ndewpoint(inside)={$currentDewpoint}\ntarget(max_humidity)={$targetHumidityCurrent}\nnew_target(max_humidity)={$targetHumidityAdjusted}\n";
+      $headers = 'From: your@email.com' . "\r\n" .
+      'Reply-To: your@email.com' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+      mail($to, $subject, $message, $headers);
+
   }
 } catch (Exception $e) {
   echo "Exception: ".$e->getMessage()."\n";
