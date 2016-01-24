@@ -80,12 +80,6 @@ function adjustedHumidity($inside, $outside, $rh) {
     $target -= 5;
 	$dp = calculateDewpoint($inside, $target);
 	$dpo = $dp - $outside;
-/* 	echo "dp={$dp}\n";
-    echo "inside={$inside}\n";
-	echo "outside={$outside}\n";
-	echo "target={$target}\n";
-	echo "dp-outside={$dpo}\n";
- */  
 
  }
   // Respect MIN/MAX settings
@@ -149,7 +143,7 @@ try {
       // Send email when Humidity changes
       $to      = 'your@email.com';
       $subject = 'Nest Humidity';
-      $message = "Humidity changed from {$targetHumidityCurrent} to {$targetHumidityAdjusted}\n\nmode={$mode}\ntemp(inside)={$insideTemp}\ntemp(outside)={$outsideTemp}\nhumidity(inside)={$insideHumidity}\ndewpoint(inside)={$currentDewpoint}\ntarget(max_humidity)={$targetHumidityCurrent}\nnew_target(max_humidity)={$targetHumidityAdjusted}\n";
+      $message = "Humidity changed from {$targetHumidityCurrent} to {$targetHumidityAdjusted}\n\nmode={$mode}\ntemp(inside)={$insideTemp}\ntemp(outside)={$outsideTemp}\nhumidity(inside)={$insideHumidity}\ndewpoint(inside)={$currentDewpoint}\nhumidity(current)={$targetHumidityCurrent}\nhumidity(target)={$targetHumidityAdjusted}\n";
       $headers = 'From: your@email.com' . "\r\n" .
       'Reply-To: your@email.com' . "\r\n" .
       'X-Mailer: PHP/' . phpversion();
