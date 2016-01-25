@@ -1,7 +1,7 @@
-nest-utils (forked from https://github.com/rbrenton/nest-utils)
+nest-utils
 ==========
 
-A collection of PHP scripts for reading and controlling the Nest thermostat.
+A collection of PHP scripts for reading and controlling the Nest thermostat forked from https://github.com/rbrenton/nest-utils.
 - nest.class.php from https://github.com/rbrenton/nest-api (a fork of gboudreau/nest-api)
 - humidityCheckInC.php 
   - For 2nd-generation thermostats with a humidifier.  
